@@ -10,14 +10,14 @@ const rateLimiter = require('express-rate-limit');
 
 const app = express();
 const tasks = require('./routes/task');
-const PageNotFound = require('./middleware/pageNotFound');
+const PageNotFound = require('./middleware/pageNotFound'); 
 const errorHandler = require('./middleware/error_handler');
 require('dotenv').config();
 // const port = 5000;
 const port = process.env.PORT || 5000;
 
 // middlesware
-app.use(express.json());
+
 // app.use(PageNotFound);
 app.use(express.static('./public'));
 app.use(errorHandler)
@@ -34,9 +34,9 @@ app.set('trust proxy', 1);
   app.use(cors());
   app.use(xss()); 
 
-  app.get('/', (req, res)=>{
-      res.send('Task Manager')
-  })
+//   app.get('/', (req, res)=>{
+//       res.send('Task Manager')
+//   })
 
 // route
     app.use('/api/v1/tasks', tasks);
